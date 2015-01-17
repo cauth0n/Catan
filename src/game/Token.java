@@ -16,7 +16,7 @@ public class Token {
 	public int getId() {
 		return id;
 	}
-
+	
 	public char getLetter() {
 		return letter;
 	}
