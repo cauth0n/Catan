@@ -7,10 +7,8 @@ public class Hex {
 
 	private HexType hexType;
 
-	public Hex(HexType hexType, Token token) {
+	public Hex(HexType hexType) {
 		this.hexType = hexType;
 	}
-	
-	
 
 }
