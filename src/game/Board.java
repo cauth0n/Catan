@@ -14,11 +14,12 @@ public class Board {
 	ArrayList<Hex> hexboard = new ArrayList<>();
 
 	public Board() {
-		initializehexs();
+		initializehexes();
 		initializetokens();
+	
 	}
 
-	public void initializehexs() {
+	public void initializehexes() {
 
 		int totalhex = 0;
 		int totalbrick = 0;

@@ -14,5 +14,5 @@ public class Player {
 	
 	private List<City> cities;
 	
-//swagger
+	private List<ResourceCard> resourceCard;
 }
