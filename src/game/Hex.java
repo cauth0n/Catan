@@ -15,6 +15,4 @@ public class Hex {
 		return hexType;
 	}
 	
-	
-
 }

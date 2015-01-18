@@ -9,7 +9,9 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		new Window();
+		Game game = new Game();
+		game.initializeGameBoard();
+		new Window(game.getGameBoard());
 
 	}
 

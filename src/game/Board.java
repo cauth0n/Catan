@@ -9,14 +9,14 @@ import java.util.Random;
  */
 
 public class Board {
-	
-	ArrayList<Token> tokenboard = new ArrayList<>();
-	ArrayList<Hex> hexboard = new ArrayList<>();
+
+	private ArrayList<Token> tokenboard = new ArrayList<>();
+	private ArrayList<Hex> hexboard = new ArrayList<>();
 
 	public Board() {
 		initializehexes();
 		initializetokens();
-	
+
 	}
 
 	public void initializehexes() {
@@ -30,7 +30,7 @@ public class Board {
 		int totaldesert = 0;
 
 		while (totalhex < 19) {
-			
+
 			Random hexagon = new Random();
 			int hex = hexagon.nextInt(6);
 			if (hex == 0 && totalbrick != 3) {
@@ -61,9 +61,9 @@ public class Board {
 		}
 
 	}
-	
+
 	public void initializetokens() {
-		
+
 		tokenboard.add(new Token(5, 'A'));
 		tokenboard.add(new Token(2, 'B'));
 		tokenboard.add(new Token(6, 'C'));
@@ -83,15 +83,32 @@ public class Board {
 		tokenboard.add(new Token(3, 'Q'));
 		tokenboard.add(new Token(11, 'R'));
 		Collections.shuffle(tokenboard);
-		
-		}
-	
+
+	}
+
 	public void tokenassignment() {
-		for(int i = 0; i < hexboard.size(); i++) {
+		for (int i = 0; i < hexboard.size(); i++) {
 			if (hexboard.get(i).getHexType() == HexType.desert) {
 				tokenboard.set(i, null);
 			}
-			
+
 		}
 	}
+
+	public ArrayList<Token> getTokenboard() {
+		return tokenboard;
+	}
+
+	public void setTokenboard(ArrayList<Token> tokenboard) {
+		this.tokenboard = tokenboard;
+	}
+
+	public ArrayList<Hex> getHexboard() {
+		return hexboard;
+	}
+
+	public void setHexboard(ArrayList<Hex> hexboard) {
+		this.hexboard = hexboard;
+	}
+
 }
