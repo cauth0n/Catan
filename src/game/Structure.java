@@ -7,9 +7,6 @@ public abstract class Structure {
 	public Structure(){
 		
 	}
-	
-	public getLocation(){
-		
-	}
+
 
 }

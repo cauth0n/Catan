@@ -10,8 +10,8 @@ public class Cards {
 		for (int i = 0; i < 14; i++) {
 			devcard.add(DevType.knights);
 		}
-		for (int i = 0; i < 14; i++) {
-			devcard.add(DevType.knights);
+		for (int i = 0; i < 5; i++) {
+			devcard.add(DevType.victorypoint);
 		}
 		for (int i = 0; i < 14; i++) {
 			devcard.add(DevType.knights);

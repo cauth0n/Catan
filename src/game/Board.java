@@ -2,68 +2,100 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 /**
  * @author cauthon
  */
 
 public class Board {
-	
-	ArrayList<Token> tokenboard = new ArrayList<>();
-	ArrayList<Hex> hexboard = new ArrayList<>();
+
+	private ArrayList<Token> tokenboard = new ArrayList<>();
+	private ArrayList<Hex> hexboard = new ArrayList<>();
+	private ArrayList<ResourceCard> bank = new ArrayList<>();
+	private ArrayList<DevCard> devbank = new ArrayList<>();
+	private ArrayList<Ports> ports = new ArrayList<>();
 
 	public Board() {
-		initializehexes();
-		initializetokens();
+
+	}
 	
+	public void initializeports() {
+		ports.add(new Ports(PortType.brick));
+		ports.add(new Ports(PortType.lumber));
+		ports.add(new Ports(PortType.sheep));
+		ports.add(new Ports(PortType.wheat));
+		ports.add(new Ports(PortType.ore));
+		
+		for (int i = 0; i < 4; i++) {
+			ports.add(new Ports(PortType.random));
+		}
+		
+		Collections.shuffle(ports);
+	}
+
+	public void initializebank() {
+
+		for (int i = 0; i < 19; i++) {
+			bank.add(new ResourceCard(ResourceType.brick));
+			bank.add(new ResourceCard(ResourceType.lumber));
+			bank.add(new ResourceCard(ResourceType.sheep));
+			bank.add(new ResourceCard(ResourceType.wheat));
+			bank.add(new ResourceCard(ResourceType.ore));
+		}
+
+	}
+
+	public void initializedevbank() {
+
+		for (int i = 0; i < 14; i++) {
+			devbank.add(new DevCard(DevType.knights));
+		}
+
+		for (int i = 0; i < 5; i++) {
+			devbank.add(new DevCard(DevType.victorypoint));
+		}
+
+		for (int i = 0; i < 2; i++) {
+			devbank.add(new DevCard(DevType.roadbuilding));
+			devbank.add(new DevCard(DevType.monopoly));
+			devbank.add(new DevCard(DevType.yearofplenty));
+		}
+
+		Collections.shuffle(devbank);
 	}
 
 	public void initializehexes() {
 
-		int totalhex = 0;
-		int totalbrick = 0;
-		int totallumber = 0;
-		int totalsheep = 0;
-		int totalwheat = 0;
-		int totalore = 0;
-		int totaldesert = 0;
-
-		while (totalhex < 19) {
-			
-			Random hexagon = new Random();
-			int hex = hexagon.nextInt(6);
-			if (hex == 0 && totalbrick != 3) {
-				hexboard.add(new Hex(HexType.hills));
-				totalbrick++;
-				totalhex++;
-			} else if (hex == 1 && totallumber != 4) {
-				hexboard.add(new Hex(HexType.forest));
-				totallumber++;
-				totalhex++;
-			} else if (hex == 2 && totalsheep != 4) {
-				hexboard.add(new Hex(HexType.pasture));
-				totalsheep++;
-				totalhex++;
-			} else if (hex == 3 && totalwheat != 4) {
-				hexboard.add(new Hex(HexType.fields));
-				totalwheat++;
-				totalhex++;
-			} else if (hex == 4 && totalore != 3) {
-				hexboard.add(new Hex(HexType.mountains));
-				totalore++;
-				totalhex++;
-			} else if (hex == 5 && totaldesert != 1) {
-				hexboard.add(new Hex(HexType.desert));
-				totaldesert++;
-				totalhex++;
-			}
+		for (int i = 0; i < 3; i++) {
+			hexboard.add(new Hex(HexType.hills));
 		}
 
+		for (int i = 0; i < 4; i++) {
+			hexboard.add(new Hex(HexType.pasture));
+		}
+
+		for (int i = 0; i < 3; i++) {
+			hexboard.add(new Hex(HexType.mountains));
+		}
+
+		for (int i = 0; i < 4; i++) {
+			hexboard.add(new Hex(HexType.fields));
+		}
+
+		for (int i = 0; i < 4; i++) {
+			hexboard.add(new Hex(HexType.forest));
+		}
+
+		hexboard.add(new Hex(HexType.desert));
+
+		System.out.println(hexboard.size());
+
+		Collections.shuffle(hexboard);
+
 	}
-	
+
 	public void initializetokens() {
-		
+
 		tokenboard.add(new Token(5, 'A'));
 		tokenboard.add(new Token(2, 'B'));
 		tokenboard.add(new Token(6, 'C'));
@@ -82,16 +114,32 @@ public class Board {
 		tokenboard.add(new Token(6, 'P'));
 		tokenboard.add(new Token(3, 'Q'));
 		tokenboard.add(new Token(11, 'R'));
-		Collections.shuffle(tokenboard);
-		
-		}
-	
+
+	}
+
 	public void tokenassignment() {
-		for(int i = 0; i < hexboard.size(); i++) {
-			if (hexboard.get(i).gethextype() == HexType.desert) {
+		for (int i = 0; i < hexboard.size(); i++) {
+			if (hexboard.get(i).getHexType() == HexType.desert) {
 				tokenboard.set(i, null);
 			}
-			
+
 		}
 	}
+
+	public ArrayList<Token> getTokenboard() {
+		return tokenboard;
+	}
+
+	public void setTokenboard(ArrayList<Token> tokenboard) {
+		this.tokenboard = tokenboard;
+	}
+
+	public ArrayList<Hex> getHexboard() {
+		return hexboard;
+	}
+
+	public void setHexboard(ArrayList<Hex> hexboard) {
+		this.hexboard = hexboard;
+	}
+
 }
