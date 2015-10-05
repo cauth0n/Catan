@@ -88,8 +88,6 @@ public class Board {
 
 		hexboard.add(new Hex(HexType.desert));
 
-		System.out.println(hexboard.size());
-
 		Collections.shuffle(hexboard);
 
 	}
@@ -114,16 +112,11 @@ public class Board {
 		tokenboard.add(new Token(6, 'P'));
 		tokenboard.add(new Token(3, 'Q'));
 		tokenboard.add(new Token(11, 'R'));
+		// This is the desert hex token - essentially a blank token
+		tokenboard.add(new Token(0, 'Z'));
+		
+		Collections.shuffle(tokenboard);
 
-	}
-
-	public void tokenassignment() {
-		for (int i = 0; i < hexboard.size(); i++) {
-			if (hexboard.get(i).getHexType() == HexType.desert) {
-				tokenboard.set(i, null);
-			}
-
-		}
 	}
 
 	public ArrayList<Token> getTokenboard() {

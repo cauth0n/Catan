@@ -34,7 +34,7 @@ public class Window {
 
 		JPanel hexes = new HexPanel(gameBoard.getHexboard());
 
-		LayerUI<JComponent> layerUI = new TokenLayer();
+		LayerUI<JComponent> layerUI = new TokenLayer(gameBoard.getTokenboard());
 		JLayer<JComponent> jLayer = new JLayer<JComponent>(hexes, layerUI);
 
 		frame.add(jLayer);
