@@ -93,30 +93,40 @@ public class Board {
 	}
 
 	public void initializetokens() {
-
-		tokenboard.add(new Token(5, 'A'));
-		tokenboard.add(new Token(2, 'B'));
-		tokenboard.add(new Token(6, 'C'));
-		tokenboard.add(new Token(3, 'D'));
-		tokenboard.add(new Token(8, 'E'));
-		tokenboard.add(new Token(10, 'F'));
-		tokenboard.add(new Token(9, 'G'));
-		tokenboard.add(new Token(12, 'H'));
-		tokenboard.add(new Token(11, 'I'));
-		tokenboard.add(new Token(4, 'J'));
-		tokenboard.add(new Token(8, 'K'));
-		tokenboard.add(new Token(10, 'L'));
-		tokenboard.add(new Token(9, 'M'));
-		tokenboard.add(new Token(4, 'N'));
-		tokenboard.add(new Token(5, 'O'));
-		tokenboard.add(new Token(6, 'P'));
-		tokenboard.add(new Token(3, 'Q'));
-		tokenboard.add(new Token(11, 'R'));
-		// This is the desert hex token - essentially a blank token
-		tokenboard.add(new Token(0, 'Z'));
+		ArrayList<Token> listOfTokens = new ArrayList<>();
 		
-		Collections.shuffle(tokenboard);
+		listOfTokens.add(new Token(5, 'A'));
+		listOfTokens.add(new Token(2, 'B'));
+		listOfTokens.add(new Token(6, 'C'));
+		listOfTokens.add(new Token(3, 'D'));
+		listOfTokens.add(new Token(8, 'E'));
+		listOfTokens.add(new Token(10, 'F'));
+		listOfTokens.add(new Token(9, 'G'));
+		listOfTokens.add(new Token(12, 'H'));
+		listOfTokens.add(new Token(11, 'I'));
+		listOfTokens.add(new Token(4, 'J'));
+		listOfTokens.add(new Token(8, 'K'));
+		listOfTokens.add(new Token(10, 'L'));
+		listOfTokens.add(new Token(9, 'M'));
+		listOfTokens.add(new Token(4, 'N'));
+		listOfTokens.add(new Token(5, 'O'));
+		listOfTokens.add(new Token(6, 'P'));
+		listOfTokens.add(new Token(3, 'Q'));
+		listOfTokens.add(new Token(11, 'R'));
+		Token desertToken = new Token(0, 'Z');
+		
+		Collections.shuffle(listOfTokens);
 
+		for (int i = 0; i < hexboard.size(); i++) {
+			if (hexboard.get(i).getHexType() != HexType.desert) {
+				tokenboard.add(i, listOfTokens.get(i));
+			} else {
+				tokenboard.add(i, desertToken);
+				// We need to add this to the listOfTokens as well,
+				// so the lists stay the same size
+				listOfTokens.add(i, desertToken);
+			}
+		}
 	}
 
 	public ArrayList<Token> getTokenboard() {

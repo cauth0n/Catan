@@ -21,7 +21,7 @@ public class Window {
 	public final static int borderSize = 25;
 
 	public Window(Board gameBoard) {
-		frame = new JFrame("CATAN DOOOD");
+		frame = new JFrame("Settlers of Catan");
 		frame.setSize(windowWidth, windowHeight);
 
 		buidlClassicLayeredPanel(gameBoard);
@@ -33,7 +33,6 @@ public class Window {
 	public void buidlClassicLayeredPanel(Board gameBoard) {
 
 		JPanel hexes = new HexPanel(gameBoard.getHexboard());
-
 		LayerUI<JComponent> layerUI = new TokenLayer(gameBoard.getTokenboard());
 		JLayer<JComponent> jLayer = new JLayer<JComponent>(hexes, layerUI);
 
