@@ -117,6 +117,7 @@ public class Board {
 		
 		Collections.shuffle(listOfTokens);
 
+		// TODO: Make sure there are no 6s and 8s adjacent to each other
 		for (int i = 0; i < hexboard.size(); i++) {
 			if (hexboard.get(i).getHexType() != HexType.desert) {
 				tokenboard.add(i, listOfTokens.get(i));
